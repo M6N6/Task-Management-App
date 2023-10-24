@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageProductComponent } from './manage-product.component';
+import { ViewActiveTaskComponent } from './view-active-task.component';
 
-describe('ManageProductComponent', () => {
-  let component: ManageProductComponent;
-  let fixture: ComponentFixture<ManageProductComponent>;
+describe('ViewActiveTaskComponent', () => {
+  let component: ViewActiveTaskComponent;
+  let fixture: ComponentFixture<ViewActiveTaskComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageProductComponent ]
+      declarations: [ ViewActiveTaskComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManageProductComponent);
+    fixture = TestBed.createComponent(ViewActiveTaskComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

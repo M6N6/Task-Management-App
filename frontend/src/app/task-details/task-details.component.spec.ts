@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageCategoryComponent } from './manage-category.component';
+import { TaskDetailsComponent } from './task-details.component';
 
-describe('ManageCategoryComponent', () => {
-  let component: ManageCategoryComponent;
-  let fixture: ComponentFixture<ManageCategoryComponent>;
+describe('TaskDetailsComponent', () => {
+  let component: TaskDetailsComponent;
+  let fixture: ComponentFixture<TaskDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageCategoryComponent ]
+      declarations: [ TaskDetailsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManageCategoryComponent);
+    fixture = TestBed.createComponent(TaskDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

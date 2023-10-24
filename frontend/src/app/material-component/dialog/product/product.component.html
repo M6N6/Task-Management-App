@@ -1,26 +1,26 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row fxLayout="row">
-    <span class="title-center">{{ dialogData.action }} Product</span>
+    <span class="title-center">{{ dialogData.action }} Task</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="productForm">
+  <form [formGroup]="taskForm">
     <div fxFlex fxLayout="column">
       <div fxLayout="row wrap">
         <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input type="text" matInput formControlName="name" required />
+          <mat-label>Task Name</mat-label>
+          <input type="text" matInput formControlName="taskName" required />
           <mat-error
             *ngIf="
-              productForm.controls.name.touched &&
-              productForm.controls.name.invalid
+            taskForm.controls.taskName.touched &&
+            taskForm.controls.taskName.invalid
             "
           >
-            <span *ngIf="productForm.controls.name.errors.required"
+            <span *ngIf="taskForm.controls.taskName.errors.required"
               >This field is mandatory</span
             >
-            <span *ngIf="productForm.controls.name.errors.pattern"
+            <span *ngIf="taskForm.controls.taskName.errors.pattern"
               >This field is invalid</span
             >
           </mat-error>
@@ -29,36 +29,36 @@
 
       <div fxLayout="row wrap">
         <mat-form-field appearance="fill">
-          <mat-label>Category ID</mat-label>
-          <mat-select formControlName="categoryId">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="statusLable">
             <mat-option
-              *ngFor="let category of categories"
-              [value]="category.id"
-              >{{ category.name }}</mat-option
+              *ngFor="let status of status"
+              [value]="status"
+              >{{ status }}</mat-option
             >
           </mat-select>
           <mat-error
             *ngIf="
-              productForm.controls.categoryId.touched &&
-              productForm.controls.categoryId.invalid
+            taskForm.controls.statusLable.touched &&
+            taskForm.controls.statusLable.invalid
             "
           >
-            <span *ngIf="productForm.controls.categoryId.errors.required"
+            <span *ngIf="taskForm.controls.statusLable.errors.required"
               >This field is mandatory</span
             >
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Price</mat-label>
-          <input type="number" matInput formControlName="price" required />
+          <mat-label>Task Start Date</mat-label>
+          <input type="date" matInput formControlName="taskStartDate" required />
           <mat-error
             *ngIf="
-              productForm.controls.price.touched &&
-              productForm.controls.price.invalid
+            taskForm.controls.taskStartDate.touched &&
+            taskForm.controls.taskStartDate.invalid
             "
           >
-            <span *ngIf="productForm.controls.price.errors.required"
+            <span *ngIf="taskForm.controls.taskStartDate.errors.required"
               >This field is mandatory</span
             >
           </mat-error>
@@ -67,15 +67,15 @@
 
       <div fxLayout="row wrap">
         <mat-form-field appearance="fill">
-          <mat-label>Description</mat-label>
-          <input type="text" matInput formControlName="description" required />
+          <mat-label>Task End Date</mat-label>
+          <input type="date" matInput formControlName="taskEndDate" required />
           <mat-error
             *ngIf="
-              productForm.controls.description.touched &&
-              productForm.controls.description.invalid
+            taskForm.controls.taskEndDate.touched &&
+            taskForm.controls.taskEndDate.invalid
             "
           >
-            <span *ngIf="productForm.controls.description.errors.required"
+            <span *ngIf="taskForm.controls.taskEndDate.errors.required"
               >This field is mandatory</span
             >
           </mat-error>
@@ -91,7 +91,7 @@
     color="primary"
     type="submit"
     (click)="handleSubmit()"
-    [disabled]="!(productForm.valid && productForm.dirty)"
+    [disabled]="!(taskForm.valid && taskForm.dirty)"
   >
     {{ action }}
   </button>

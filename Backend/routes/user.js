@@ -98,9 +98,9 @@ router.post("/forgotPassword", (req, res) => {
         let mailOptions = {
           from: process.env.EMAIL,
           to: results[0].email,
-          subject: "Password retrieval by Cafe Management system",
+          subject: "Password retrieval by TaskSimplicity",
           html:
-            "<p>Your login details for the Cafe Management System <br> Email: " +
+            "<p>Your login details for the TaskSimplicity - Real-Time Collaborative Task Management App <br> Email: " +
             results[0].email +
             "<br> Password: " +
             results[0].password +
@@ -127,7 +127,7 @@ router.post("/forgotPassword", (req, res) => {
 });
 
 router.get("/get", auth.authenticate, role.checkRole, (req, res) => {
-  let query = 'select id,name,email,phone,status from user where role="user"';
+  let query = 'select id,name,email,status,phone as contactNumber from user where role="user"';
 
   connection.query(query, (err, results) => {
     if (!err) {

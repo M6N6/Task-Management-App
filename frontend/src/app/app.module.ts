@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material-module';
 import { HomeComponent } from './home/home.component';
-import { BestSellerComponent } from './best-seller/best-seller.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
@@ -25,6 +24,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 import { AccordionLinkDirective } from './shared/accordion';
+import { TaskDetailsComponent } from './task-details/task-details.component';
 
 const ngx_ui_loader_config: NgxUiLoaderConfig = {
   text: 'Loading...',
@@ -43,13 +43,13 @@ const ngx_ui_loader_config: NgxUiLoaderConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
-    BestSellerComponent,
     FullComponent,
     AppHeaderComponent,
     AppSidebarComponent,
     SignupComponent,
     ForgotPasswordComponent,
     LoginComponent,
+    TaskDetailsComponent,
   ],
   imports: [
     BrowserModule,

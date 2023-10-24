@@ -6,36 +6,25 @@ const role = require("../services/checkRole");
 const router = express.Router();
 
 router.get("/details", auth.authenticate, (req, res, next) => {
-  let categoryCount;
-  let productCount;
-  let billCount;
+  let userCount;
+  let activeTaskCount;
 
-  let queryCategory = "select count(id) as categoryCount from category";
-  connection.query(queryCategory, (err, results) => {
+  let queryUserCount = "select count(id) as userCount from user";
+  connection.query(queryUserCount, (err, results) => {
     if (!err) {
-      categoryCount = results[0].categoryCount;
+      userCount = results[0].userCount;
     } else {
       return res.status(500).json({ err });
     }
   });
 
-  let queryProduct = "select count(id) as productCount from product";
-  connection.query(queryProduct, (err, results) => {
+  let queryActiveTask = "select count(id) as activeTaskCount from task";
+  connection.query(queryActiveTask, (err, results) => {
     if (!err) {
-      productCount = results[0].productCount;
-    } else {
-      return res.status(500).json({ err });
-    }
-  });
-
-  let queryBill = "select count(id) as billCount from bill";
-  connection.query(queryBill, (err, results) => {
-    if (!err) {
-      billCount = results[0].billCount;
+      activeTaskCount = results[0].activeTaskCount;
       let data = {
-        category: categoryCount,
-        product: productCount,
-        bill: billCount,
+        user: userCount,
+        active: activeTaskCount
       };
       return res.status(200).json({ data });
     } else {

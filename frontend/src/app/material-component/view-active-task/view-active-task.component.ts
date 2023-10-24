@@ -3,18 +3,19 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { ProductService } from 'src/app/services/product.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
 import { ProductComponent } from '../dialog/product/product.component';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
-  selector: 'app-manage-product',
-  templateUrl: './manage-product.component.html',
-  styleUrls: ['./manage-product.component.scss'],
+  selector: 'app-view-active-task',
+  templateUrl: './view-active-task.component.html',
+  styleUrls: ['./view-active-task.component.scss']
 })
-export class ManageProductComponent implements OnInit {
+export class ViewActiveTaskComponent implements OnInit {
+
   displayedColumns: string[] = [
     'name',
     'category',
@@ -26,12 +27,12 @@ export class ManageProductComponent implements OnInit {
   responseMessage: any;
 
   constructor(
-    private productService: ProductService,
+    private taskService: TaskService,
     private ngxService: NgxUiLoaderService,
     private dialog: MatDialog,
     private snackBar: SnackbarService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.ngxService.start();
@@ -39,7 +40,7 @@ export class ManageProductComponent implements OnInit {
   }
 
   tableData() {
-    this.productService.getProducts().subscribe(
+    this.taskService.getTasks().subscribe(
       (resp: any) => {
         this.ngxService.stop();
         this.dataSource = new MatTableDataSource(resp.data);
@@ -101,7 +102,7 @@ export class ManageProductComponent implements OnInit {
   handleDeleteAction(value: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
-      message: 'delete ' + value.name + ' product',
+      message: 'delete ' + value.taskName + ' task',
     };
 
     const dialogRef = this.dialog.open(ConfirmationComponent, dialogConfig);
@@ -116,7 +117,7 @@ export class ManageProductComponent implements OnInit {
   }
 
   deleteProduct(id: any) {
-    this.productService.delete(id).subscribe(
+    this.taskService.delete(id).subscribe(
       (resp: any) => {
         this.ngxService.stop();
         this.tableData();
@@ -141,7 +142,7 @@ export class ManageProductComponent implements OnInit {
       id,
     };
 
-    this.productService.updateStatus(data).subscribe(
+    this.taskService.updateStatus(data).subscribe(
       (resp: any) => {
         this.ngxService.stop();
         this.responseMessage = resp?.message;
@@ -158,4 +159,5 @@ export class ManageProductComponent implements OnInit {
       }
     );
   }
+
 }

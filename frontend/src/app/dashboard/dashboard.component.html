@@ -7,43 +7,29 @@
     <div class="column">
       <div class="card">
         <div class="container">
-          <h2 class="title">Total Category:</h2>
-          <h1 class="title">{{ data?.category }}</h1>
+          <h2 class="title">Users:</h2>
+          <h1 class="title">{{ data?.user }}</h1>
           <p>
-            <button class="button" [routerLink]="['/cafe/category']">
-              View Categories
+            <button class="button" [routerLink]="['/cafe/user']">
+              View Users
             </button>
           </p>
         </div>
       </div>
     </div>
-
+    
     <div class="column">
-        <div class="card">
-          <div class="container">
-            <h2 class="title">Total Products:</h2>
-            <h1 class="title">{{ data?.product }}</h1>
-            <p>
-              <button class="button" [routerLink]="['/cafe/product']">
-                View Products
-              </button>
-            </p>
-          </div>
+      <div class="card">
+        <div class="container">
+          <h2 class="title">Total Tasks:</h2>
+          <h1 class="title">{{ data?.active }}</h1>
+          <p>
+            <button class="button" [routerLink]="['/cafe/task']">
+              View Tasks
+            </button>
+          </p>
         </div>
       </div>
-
-      <div class="column">
-        <div class="card">
-          <div class="container">
-            <h2 class="title">Total Bills:</h2>
-            <h1 class="title">{{ data?.bill }}</h1>
-            <p>
-              <button class="button" [routerLink]="['/cafe/bill']">
-                View Bills
-              </button>
-            </p>
-          </div>
-        </div>
-      </div>
+    </div>
   </div>
 </body>
